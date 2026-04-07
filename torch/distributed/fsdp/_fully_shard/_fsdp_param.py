@@ -342,12 +342,12 @@ class FSDPParam:
         # Let `param_data` be freed normally when its ref count reaches 0 when
         # the `fully_shard` call returns to allow provided parameters to alias
         self._setattr_on_modules(self.sharded_param)
-        self.sharded_param._fsdp_orig_uid = (
+        self.sharded_param._fsdp_orig_uid = (  # pyrefly: ignore[missing-attribute]
             self._orig_param_uid
-        )  # pyrefly: ignore[missing-attribute]
-        self.sharded_param._fsdp_orig_owner = (
+        )
+        self.sharded_param._fsdp_orig_owner = (  # pyrefly: ignore[missing-attribute]
             param._fsdp_orig_owner
-        )  # pyrefly: ignore[missing-attribute]
+        )
         self.sharded_state = ShardedState.SHARDED
 
     def _init_sharding_spec(
